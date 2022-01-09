@@ -1,27 +1,25 @@
 import { Product } from "../interface/product.interface";
 
-import { Wrapper } from "./list.styles";
-
 type Props = {
   productList: Product;
-  handleAddToCart: (clickedItem: Product) => void;
+  handleAddToCart: (selectedItem: Product) => void;
 };
 
 const List: React.FC<Props> = ({ productList, handleAddToCart }) => (
-  <Wrapper>
-    <h3>
-      {"Child No:"} {productList.userId}
+  <div className="singleCart">
+    <h3 className="childIdentity">
+      {"Child Identity:"} {productList.userId}
     </h3>
-    <h4>{"Product Choice"}</h4>
-    <ul>
+    <h5 className="product-title">{"Product Choice"}</h5>
+    <div className="productContainer">
       {productList.products.map((product) => (
-        <li key={product.productId}>
-          {product.productId} {product.quantity}
-        </li>
+        <p key={product.productId}>
+          {"productId:"} {product.productId} {"quantity:"} {product.quantity}
+        </p>
       ))}
-    </ul>
+    </div>
     <button onClick={()=> handleAddToCart(productList)}>Add to cart</button>
-  </Wrapper>
+  </div>
 );
 
 export default List;
