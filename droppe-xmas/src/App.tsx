@@ -20,7 +20,6 @@ const App = () => {
   if (error) return <div>{DataState.ERROR}</div>;
 
   return (
-    <>
       <div className="all-carts">
         {data?.map((product) => (
           <div key={product.id}>
@@ -28,7 +27,6 @@ const App = () => {
           </div>
         ))}
       </div>
-    </>
   );
 };
 
