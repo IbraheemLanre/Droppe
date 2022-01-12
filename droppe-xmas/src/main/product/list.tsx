@@ -5,10 +5,10 @@ import './list.css';
 
 type Props = {
   productList: Product;
-  handleAddToCart: (selectedItem: Product) => void;
+  handleAddToCart: (selectedProduct: Product) => void;
 };
 
-const List: React.FC<Props> = ({ productList, handleAddToCart }) => (
+const List = ({ productList, handleAddToCart }: Props) => (
   
   <div className="singleCart">
     <h3 className="childIdentity">
