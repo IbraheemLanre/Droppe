@@ -14,8 +14,8 @@ const App = () => {
   const { data, isLoading, error } = useQuery<Product[]>("products", getLists);
   console.log(data);
 
-  // Returns the number of quantity in for each child
-  const getTotalLists = (productList: Product[]) => {
+  // Returns the number of quantity in for all child in the cart
+  const getTotalProductList = (productList: Product[]) => {
     productList.forEach((product) =>
       product.products.reduce(
         (ack: number, product) => ack + product.quantity,
@@ -23,6 +23,7 @@ const App = () => {
       )
     );
   };
+  
   const handleAddToCart = (selectedProduct: Product) => null;
   const handledRemoveFromCart = () => null;
 
@@ -32,9 +33,11 @@ const App = () => {
   return (
     <>
       <div className="slider"></div>
-      <div className="container-cart">
+      <div className="shoppingCart">
         <button onClick={() => setIsCartOpen(false)}>X</button>
-        <div className="forshoppingCartIcon"></div>
+        <div className="totalProduct">
+          <p>{getTotalProductList}</p>
+        </div>
       </div>
       <div className="all-carts">
         {data?.map((product) => (
