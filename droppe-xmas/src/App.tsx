@@ -14,8 +14,6 @@ const App = () => {
   const { data, isLoading, error } = useQuery<Product[]>("products", getLists);
   console.log(data);
 
-
-
   const handleAddToCart = (selectedProduct: Product[]) => {
     setProductlist(selectedProduct);
   };
@@ -38,7 +36,6 @@ const App = () => {
       </div>
 
       {/* Shows the items added to the Cart */}
-      
       <Cart
         cartItems={productList}
         addToCart={handleAddToCart}
