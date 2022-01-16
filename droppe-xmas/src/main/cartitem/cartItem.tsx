@@ -2,11 +2,10 @@ import { Product } from "../interface/product.interface";
 
 type Props = {
   item: Product;
-  addToCart: (selectedItem: Product | any) => void;
-  removeFromCart: (id: number | any) => void;
+  addToCart: (selectedItem: Product[] | any) => void;
 };
 
-const CartItem = ({ item, addToCart, removeFromCart }: Props) => {
+const CartItem = ({ item, addToCart }: Props) => {
   return (
     <>
       <div className="info">
@@ -18,14 +17,6 @@ const CartItem = ({ item, addToCart, removeFromCart }: Props) => {
         <p>Total Product: {item.products.map((child) => child.quantity)}</p>
       </div>
       <div className="btn">
-        <button
-          onClick={() =>
-            removeFromCart(item.products.map((child) => child.productId))
-          }
-        >
-          -
-        </button>
-
         <button
           onClick={() =>
             addToCart(item.products.map((child) => child.productId))

@@ -1,15 +1,14 @@
+import { useState } from "react";
 import { Product } from "../interface/product.interface";
 
-import './list.css';
-
+import "./list.css";
 
 type Props = {
   productList: Product;
-  handleAddToCart: (selectedProduct: Product) => void;
+  handleAddToCart: (selectedProduct: Product[]) => void;
 };
 
 const List = ({ productList, handleAddToCart }: Props) => (
-  
   <div className="singleCart">
     <h3 className="childIdentity">
       {"Child Identity:"} {productList.userId}
@@ -19,10 +18,13 @@ const List = ({ productList, handleAddToCart }: Props) => (
       {productList.products.map((product) => (
         <p key={product.productId}>
           {"productId:"} {product.productId} {"quantity:"} {product.quantity}
+          <button className="product-btn" onClick={() => handleAddToCart}>
+            Add To Cart
+          </button>
         </p>
       ))}
     </div>
-    <button onClick={()=> handleAddToCart(productList)}>Add to cart</button>
+    
   </div>
 );
 
